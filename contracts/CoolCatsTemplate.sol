@@ -60,6 +60,7 @@ contract CoolCatsTemplate is ERC721Enumerable, Ownable {
         // Check if minting is paused or active
         require( !_paused,                              "Sale paused" );
         // Only doing < safe gas instead of doing <= since we safe compuation to do equal comparison
+        // Hard coding the number 21 also safe gas since this comparison will just happen in the stack
         // Change 21 to any max amount of minting you will allow in a single call
         require( num < 21,                              "You can adopt a maximum of 20 NFT" );
         require( supply + num < 10000 - _reserved,      "Exceeds maximum NFT supply" );
