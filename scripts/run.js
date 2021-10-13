@@ -10,10 +10,16 @@ const main = async () => {
   await contract.deployed();
   console.log("Contract deployed to:", contract.address);
 
+  // Activate minting
+  let activateTxn = await contract.pause(false);
+  await activateTxn.wait();
+
   // Call the function.
-  let txn = await contract.adopt(20);
+  let adoptTxn = await contract.adopt(20, {
+    value: hre.ethers.utils.parseEther("1.2"),
+  });
   // Wait for it to be mined.
-  await txn.wait();
+  await adoptTxn.wait();
 };
 
 const runMain = async () => {
