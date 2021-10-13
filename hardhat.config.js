@@ -18,4 +18,10 @@ task("accounts", "Prints the list of accounts", async (taskArgs, hre) => {
  */
 module.exports = {
   solidity: "0.8.4",
+  networks: {
+    rinkeby: {
+      url: ``, // Add your deployment URL. Remember to use and refer to .env
+      accounts: [``], // Add your private key. Remember to use and refer to .env
+    },
+  },
 };
